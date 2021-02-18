@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ToHModles
+namespace ToHDL
 {
     public class Class1
     {
