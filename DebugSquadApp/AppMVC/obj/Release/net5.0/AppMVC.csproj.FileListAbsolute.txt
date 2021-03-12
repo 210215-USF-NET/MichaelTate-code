@@ -1,0 +1,8 @@
+C:\Users\mtwil\source\repos\DebugSquadApp\AppMVC\obj\Release\net5.0\AppMVC.csprojAssemblyReference.cache
+C:\Users\mtwil\source\repos\DebugSquadApp\AppMVC\obj\Release\net5.0\AppMVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mtwil\source\repos\DebugSquadApp\AppMVC\obj\Release\net5.0\AppMVC.AssemblyInfoInputs.cache
+C:\Users\mtwil\source\repos\DebugSquadApp\AppMVC\obj\Release\net5.0\AppMVC.AssemblyInfo.cs
+C:\Users\mtwil\source\repos\DebugSquadApp\AppMVC\obj\Release\net5.0\AppMVC.csproj.CoreCompileInputs.cache
+C:\Users\mtwil\source\repos\DebugSquadApp\AppMVC\obj\Release\net5.0\AppMVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\mtwil\source\repos\DebugSquadApp\AppMVC\obj\Release\net5.0\AppMVC.RazorAssemblyInfo.cache
+C:\Users\mtwil\source\repos\DebugSquadApp\AppMVC\obj\Release\net5.0\AppMVC.RazorAssemblyInfo.cs
