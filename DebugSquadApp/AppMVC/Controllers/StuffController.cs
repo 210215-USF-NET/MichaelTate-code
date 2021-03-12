@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AppBL;
+using AppMVC.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,10 +11,19 @@ namespace AppMVC.Controllers
 {
     public class StuffController : Controller
     {
+        private IApplicationBL _appBL;
+        private IMapper _mapper;
+
+        public StuffController(IApplicationBL appBL, IMapper mapper)
+        {
+            _appBL = appBL;
+            _mapper = mapper;
+        }
+
         // GET: StuffController
         public ActionResult Index()
         {
-            return View();
+            return View(_appBL.GetStuff().Select(stuff => _mapper.Cast2StuffIndexVM(stuff)).ToList());
         }
 
         // GET: StuffController/Details/5
@@ -30,38 +41,43 @@ namespace AppMVC.Controllers
         // POST: StuffController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(StuffCRVM newStuff)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _appBL.AddStuff(_mapper.Cast2Stuff(newStuff));
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: StuffController/Edit/5
-        public ActionResult Edit(int id)
-        {
             return View();
         }
 
+        // GET: StuffController/Edit/5
+        //public ActionResult Edit(int id)
+        //{
+        //    return View();
+        //}
+
         // POST: StuffController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit(int id, IFormCollection collection)
+        //{
+        //    try
+        //    {
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: StuffController/Delete/5
         public ActionResult Delete(int id)

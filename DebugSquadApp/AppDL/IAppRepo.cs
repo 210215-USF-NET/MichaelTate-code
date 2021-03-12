@@ -15,10 +15,12 @@ namespace AppDL
 
         User GetUserByName(string name);
 
-        public void AddStuffs(Stuff newStuff);
+        Stuff AddStuff(Stuff newStuff);
 
         List<Stuff> GetStuff();
 
         public Stuff GetStuffsByName(string name);
+
+        Stuff DeleteStuff(Stuff stuff2BDeleted);
     }
 }

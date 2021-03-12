@@ -1,8 +1,23 @@
-﻿namespace AppMVC.Models
+﻿using AppModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace AppMVC.Models
 {
     public interface IMapper
     {
-        User ParseUser(CustomerCRVM newUser);
-        CustomerIndexVM cast2CustomerIndexVM(Customer customer)
+        User Cast2User(UserCRVM user2BCasted);
+
+        UserCRVM Cast2UserCRVM(User user);
+
+        Stuff Cast2Stuff(StuffCRVM stuff2BCasted);
+
+        StuffCRVM Cast2StuffCRVM(Stuff stuff);
+
+        UserIndexVM Cast2UserIndexVM(User user2BCasted);
+
+        StuffIndexVM Cast2StuffIndexVM(Stuff stuff2BCasted);
     }
 }

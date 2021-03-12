@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using AppDL;
 using AppBL;
 using Microsoft.EntityFrameworkCore;
+using AppMVC.Models;
 
 namespace AppMVC
 {
@@ -28,6 +29,9 @@ namespace AppMVC
         {
             services.AddControllersWithViews();
             services.AddDbContext<AppDBContext>(options => options.UseNpgsql(Configuration.GetConnectionString("TDADB")));
+            services.AddScoped<IAppRepo, AppRepoDB>();
+            services.AddScoped<IApplicationBL, ApplicationBL>();
+            services.AddScoped<IMapper, Mapper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

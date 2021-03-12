@@ -9,6 +9,7 @@ namespace AppMVC.Models
 {
     public class UserCRVM
     {
+        public string name;
         [DisplayName("Full Name")]
         [Required]
         public string Name { get; set; }

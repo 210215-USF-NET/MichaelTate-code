@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AppModels;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AppMVC.Models
 {
@@ -16,6 +13,10 @@ namespace AppMVC.Models
         [DisplayName("Task Description")]
         [Required]
         public string StuffDescription { get; set; }
+
+        [DisplayName("Assigned To")]
+        [Required]
+        public string Name { get; set; }
 
         [DisplayName("Status")]
         [Required]

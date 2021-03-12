@@ -8,18 +8,23 @@ using AppDL;
 
 namespace AppBL
 {
-    internal class ApplicationBL : IApplicationBL
+    public class ApplicationBL : IApplicationBL
     {
         private IAppRepo _repo;
 
-        public void AddStuffs(Stuff newTask)
+        public ApplicationBL(IAppRepo repo)
         {
-            _repo.AddStuffs(newTask);
+            _repo = repo;
         }
 
-        public void AddUser(User newUser)
+        public Stuff AddStuff(Stuff newStuff)
         {
-            _repo.AddUser(newUser);
+            return _repo.AddStuff(newStuff);
+        }
+
+        public User AddUser(User newUser)
+        {
+            return _repo.AddUser(newUser);
         }
 
         public List<Stuff> GetStuff()
@@ -40,6 +45,11 @@ namespace AppBL
         public List<User> GetUser()
         {
             return _repo.GetUser();
+        }
+
+        public Stuff DeleteStuff(Stuff stuff2BDeleted)
+        {
+            return _repo.DeleteStuff(stuff2BDeleted);
         }
     }
 }

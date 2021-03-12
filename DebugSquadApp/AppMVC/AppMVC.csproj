@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Stuff\StuffIndex.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Models\NewFile.txt" />
   </ItemGroup>
 

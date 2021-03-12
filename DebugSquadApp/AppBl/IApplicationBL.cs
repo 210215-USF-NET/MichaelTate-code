@@ -8,14 +8,16 @@ namespace AppBL
     {
         List<User> GetUser();
 
-        void AddUser(User newUser);
+        User AddUser(User newUser);
 
         User GetUserByName(string name);
 
         List<Stuff> GetStuff();
 
-        void AddStuffs(Stuff newTask);
+        Stuff AddStuff(Stuff newTask);
 
         Stuff GetStuffsByName(string name);
+
+        Stuff DeleteStuff(Stuff stuff2BDeleted);
     }
 }

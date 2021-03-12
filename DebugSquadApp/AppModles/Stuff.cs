@@ -8,14 +8,14 @@ namespace AppModels
 {
     public class Stuff
     {
-        //id
-        private int id;
 
         //eventName
         private string stuffName;
 
         //event description
         private string stuffDescription;
+
+        private string userId;
 
         //date
         public int Id { get; set; }
@@ -47,5 +47,8 @@ namespace AppModels
         }
 
         public string StuffStatus { get; set; }
+
+        //public User Name { get; set; }
+
     }
 }

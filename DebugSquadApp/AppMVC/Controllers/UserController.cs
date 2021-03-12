@@ -5,17 +5,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AppBL;
+using AppMVC.Models;
 
 namespace AppMVC.Controllers
 {
     public class UserController : Controller
     {
-        private Iapp
+        private IApplicationBL _appBL;
+        private IMapper _mapper;
+
+        public UserController(IApplicationBL appBL, IMapper mapper)
+        {
+            _appBL = appBL;
+            _mapper = mapper;
+        }
 
         // GET: UserController
         public ActionResult Index()
         {
-            return View();
+            return View(_appBL.GetUser().Select(user => _mapper.Cast2UserIndexVM(user)).ToList());
         }
 
         // GET: UserController/Details/5
@@ -27,22 +35,27 @@ namespace AppMVC.Controllers
         // GET: UserController/Create
         public ActionResult Create()
         {
-            return View();
+            return View("CreateUser");
         }
 
         // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(UserCRVM newUser)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _appBL.AddUser(_mapper.Cast2User(newUser));
+                    return RedirectToAction(nameof(Index));
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: UserController/Edit/5

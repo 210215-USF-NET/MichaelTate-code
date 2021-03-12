@@ -25,11 +25,17 @@ namespace AppDL.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("TaksDescription")
+                    b.Property<string>("StuffDescription")
                         .HasColumnType("text");
 
-                    b.Property<string>("TaskName")
+                    b.Property<string>("StuffName")
                         .HasColumnType("text");
+
+                    b.Property<string>("StuffStatus")
+                        .HasColumnType("text");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
