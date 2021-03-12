@@ -1,4 +1,5 @@
 # ASP.NET
+
 # Build and test ASP.NET projects.
 # Add steps that publish symbols, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
@@ -10,7 +11,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: 'DebugSquadApp/*.sln'
+  solution: '**/DebugSquadApp/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -32,3 +33,17 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    zipAfterPublish: true
+    arguments: 
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(26bcf05b-8068-44d1-bf29-71fd533849a4)'
+    appType: 'webApp'
+    WebAppName: 'HackerTask'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
